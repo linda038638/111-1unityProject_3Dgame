@@ -1,18 +1,18 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using TMPro;
 using System.Collections;
 
 namespace Misun
 {
     /// <summary>
-    /// ¹ï¸Ü¨t²Î,¦³¥´¦r¾÷®ÄªG,¹ï¸Ü§¹¦¨¤§«á¤~¥i¥H¸õ¨ì¤U¤@¨B(¤U­Ó¹ï¸Ü)
+    /// å°è©±ç³»çµ±,æœ‰æ‰“å­—æ©Ÿæ•ˆæœ,å°è©±å®Œæˆä¹‹å¾Œæ‰å¯ä»¥è·³åˆ°ä¸‹ä¸€æ­¥(ä¸‹å€‹å°è©±)
     /// </summary>
     public class DialogueSystem : MonoBehaviour
     {
-        #region ¸ê®Æ°Ï°ì
-        [SerializeField, Header("¹ï¸Ü¶¡¹j"), Range(0, 0.5f)]
+        #region è³‡æ–™å€åŸŸ
+        [SerializeField, Header("å°è©±é–“éš”"), Range(0, 0.5f)]
         private float dialogueTntervalTime = 0.1f;
-        [SerializeField, Header("¶}ÀY¹ï¸Ü")]
+        [SerializeField, Header("é–‹é ­å°è©±")]
         private DialogueData dialogueOpening;
 
 
@@ -24,13 +24,13 @@ namespace Misun
         #endregion
 
 
-        #region ¹w³B²z¨Æ¥ó
+        #region é è™•ç†äº‹ä»¶
         private void Awake()
         {
-            groupDialogue = GameObject.Find("µe¥¬¹ï¸Ü¨t²Î").GetComponent<CanvasGroup>();
-            textName = GameObject.Find("¹ï¸ÜªÌ©m¦W").GetComponent<TextMeshProUGUI>();
-            textContents = GameObject.Find("¹ï¸Ü¤º®e").GetComponent<TextMeshProUGUI>();
-            goToNext = GameObject.Find("¤U¤@¨B");
+            groupDialogue = GameObject.Find("ç•«å¸ƒå°è©±ç³»çµ±").GetComponent<CanvasGroup>();
+            textName = GameObject.Find("å°è©±è€…å§“å").GetComponent<TextMeshProUGUI>();
+            textContents = GameObject.Find("å°è©±å…§å®¹").GetComponent<TextMeshProUGUI>();
+            goToNext = GameObject.Find("ä¸‹ä¸€æ­¥");
 
             StartDialogue(dialogueOpening);
 

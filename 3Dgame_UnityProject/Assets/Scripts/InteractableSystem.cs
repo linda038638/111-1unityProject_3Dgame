@@ -1,10 +1,10 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
 namespace Misun
 {
     public class InteractableSystem : MonoBehaviour
     {
-        [SerializeField, Header("πÔ∏‹∏ÍÆ∆")]
+        [SerializeField, Header("Â∞çË©±Ë≥áÊñô")]
         private DialogueData dataDialogue;
 
         private string nameTarget = "PlayerCapsule";
@@ -12,7 +12,7 @@ namespace Misun
         private DialogueSystem dialogueSystem;
         private void Awake()
         {
-            dialogueSystem = GameObject.Find("µe•¨πÔ∏‹®t≤Œ").GetComponent<DialogueSystem>();
+            dialogueSystem = GameObject.Find("Áï´Â∏ÉÂ∞çË©±Á≥ªÁµ±").GetComponent<DialogueSystem>();
         }
 
         private void OnTriggerEnter(Collider other)
