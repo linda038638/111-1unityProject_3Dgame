@@ -2,6 +2,11 @@
 
 namespace Misun
 {
+    /// <summary>
+    /// 互動系統
+    /// 當玩家與物件互動時，觸發對話、事件
+    /// 
+    /// </summary>
     public class InteractableSystem : MonoBehaviour
     {
         [SerializeField, Header("對話資料")]

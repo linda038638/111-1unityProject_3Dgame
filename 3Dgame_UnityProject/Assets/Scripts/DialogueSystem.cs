@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 namespace Misun
 {
     /// <summary>
-    /// 對話系統,有打字機效果,對話完成之後才可以跳到下一步(下個對話)
+    /// 對話系統,有打字機效果
+    /// 對話完成之後才可以跳到下一步(下個對話)
+    /// 對話期間限制其行動能力
     /// </summary>
     public class DialogueSystem : MonoBehaviour
     {
@@ -15,12 +18,13 @@ namespace Misun
         [SerializeField, Header("開頭對話")]
         private DialogueData dialogueOpening;
 
-
+        //建立WFS類別的物件
         private WaitForSeconds dialogueInterval => new WaitForSeconds(dialogueTntervalTime);
         private CanvasGroup groupDialogue;
         private TextMeshProUGUI textName;
         private TextMeshProUGUI textContents;
         private GameObject goToNext;
+        private PlayerInput playerInput; //玩家輸入元件
         #endregion
 
 
@@ -31,7 +35,8 @@ namespace Misun
             textName = GameObject.Find("對話者姓名").GetComponent<TextMeshProUGUI>();
             textContents = GameObject.Find("對話內容").GetComponent<TextMeshProUGUI>();
             goToNext = GameObject.Find("下一步");
-
+            goToNext.SetActive(false);
+            playerInput = GameObject.Find("PlayerCapsule").GetComponent<PlayerInput>();
             StartDialogue(dialogueOpening);
 
 
@@ -41,8 +46,11 @@ namespace Misun
 
         public void StartDialogue(DialogueData data)
         {
-            StartCoroutine(TypeEffect(data));
-
+            playerInput.enabled = false;
+            //Debug.Log("unable");
+            StartCoroutine(TypeEffect(data)); //協程開始
+            //這裡寫的東西會跟協程的東西同步進行(***所以不會等協程程式結束才執行***)
+        
         }
 
 
@@ -72,6 +80,8 @@ namespace Misun
             }
 
             StartCoroutine(FadeGroup(false));
+            playerInput.enabled = true;
+            //Debug.Log("able");
 
         }
 
