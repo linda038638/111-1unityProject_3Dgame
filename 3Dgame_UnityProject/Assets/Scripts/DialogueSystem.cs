@@ -89,7 +89,7 @@ namespace Misun
             StartCoroutine(FadeGroup(false));
             playerInput.enabled = true;
             //Debug.Log("able");
-            onDiaogueFinish?.Invoke();  //呼叫對話後的事件 ?.表示可以空值.
+            onDiaogueFinish?.Invoke();  //呼叫對話後的事件 ?.表示可以空值
 
         }
 

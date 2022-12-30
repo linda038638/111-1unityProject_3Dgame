@@ -31,6 +31,11 @@ namespace Misun
             }
         }
 
+        public void HiddenObject()
+        {
+            gameObject.SetActive(false);
+        }
+
     }
 
 }
