@@ -2,6 +2,7 @@
 using TMPro;
 using System.Collections;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 namespace Misun
 {
@@ -10,6 +11,7 @@ namespace Misun
     /// 對話完成之後才可以跳到下一步(下個對話)
     /// 對話期間限制其行動能力
     /// </summary>
+    /// 
     public class DialogueSystem : MonoBehaviour
     {
         #region 資料區域
@@ -26,7 +28,8 @@ namespace Misun
         private GameObject goToNext;
         private PlayerInput playerInput; //玩家輸入元件
         #endregion
-
+        
+        private UnityEvent onDiaogueFinish;
 
         #region 預處理事件
         private void Awake()
@@ -43,14 +46,18 @@ namespace Misun
         }
         #endregion
 
-
-        public void StartDialogue(DialogueData data)
+        /// <summary>
+        /// 開始對話
+        /// </summary>
+        /// <param name="data">要執行對話的資料</param>
+        /// <param name="_onDialogueFinish">對話後的事件，可以空值</param>
+        public void StartDialogue(DialogueData data , UnityEvent _onDialogueFinish = null)
         {
             playerInput.enabled = false;
             //Debug.Log("unable");
             StartCoroutine(TypeEffect(data)); //協程開始
             //這裡寫的東西會跟協程的東西同步進行(***所以不會等協程程式結束才執行***)
-        
+            onDiaogueFinish = _onDialogueFinish;
         }
 
 
@@ -82,6 +89,7 @@ namespace Misun
             StartCoroutine(FadeGroup(false));
             playerInput.enabled = true;
             //Debug.Log("able");
+            onDiaogueFinish?.Invoke();  //呼叫對話後的事件 ?.表示可以空值.
 
         }
 

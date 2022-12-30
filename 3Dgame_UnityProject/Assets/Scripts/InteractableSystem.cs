@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace Misun
 {
@@ -11,6 +12,8 @@ namespace Misun
     {
         [SerializeField, Header("對話資料")]
         private DialogueData dataDialogue;
+        [SerializeField, Header("對話結束後的事件")]
+        private UnityEvent onDiaogueFinish;
 
         private string nameTarget = "PlayerCapsule";
 
