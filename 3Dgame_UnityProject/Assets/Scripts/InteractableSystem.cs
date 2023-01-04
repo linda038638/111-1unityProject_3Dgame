@@ -20,6 +20,8 @@ namespace Misun
         private GameObject propActive;
         [SerializeField, Header("啟動後對話資料")]
         private DialogueData dataDialogueActive;
+        [SerializeField, Header("啟動後對話結束後的事件")]
+        private UnityEvent onDiaogueFinishAfterActive;
         private string nameTarget = "PlayerCapsule";
 
         private DialogueSystem dialogueSystem;
@@ -35,11 +37,15 @@ namespace Misun
             {
                 if(propActive == null || propActive.activeInHierarchy)
                 {
+                    
+                    Debug.Log("fin");
                     dialogueSystem.StartDialogue(dataDialogue, onDiaogueFinish);
                 }
                 else
                 {
-                    dialogueSystem.StartDialogue(dataDialogueActive);
+                    Debug.Log("say");
+                    dialogueSystem.StartDialogue(dataDialogueActive, onDiaogueFinishAfterActive);
+                    
                 }
                 
             }
@@ -48,7 +54,7 @@ namespace Misun
         public void HiddenObject()
         {
             gameObject.SetActive(false);
-            Debug.Log("do!");
+            Debug.Log("檢鑰匙");
         }
 
     }
