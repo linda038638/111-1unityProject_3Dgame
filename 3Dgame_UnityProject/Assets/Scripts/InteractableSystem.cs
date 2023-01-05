@@ -38,12 +38,12 @@ namespace Misun
                 if(propActive == null || propActive.activeInHierarchy)
                 {
                     
-                    Debug.Log("fin");
+                    Debug.Log("第一階段說話");
                     dialogueSystem.StartDialogue(dataDialogue, onDiaogueFinish);
                 }
                 else
                 {
-                    Debug.Log("say");
+                    Debug.Log("啟動後說話");
                     dialogueSystem.StartDialogue(dataDialogueActive, onDiaogueFinishAfterActive);
                     
                 }
@@ -54,7 +54,7 @@ namespace Misun
         public void HiddenObject()
         {
             gameObject.SetActive(false);
-            Debug.Log("檢鑰匙");
+            Debug.Log("得到鑰匙");
         }
 
     }
